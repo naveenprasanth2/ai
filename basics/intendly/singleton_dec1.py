@@ -1,13 +1,16 @@
-from typing import Any, Dict
+from typing import Any, Dict, TypeVar, Type, Callable, cast
 
-def singleton(cls):
-    instances : Dict[Any, Any] = {}
+T = TypeVar('T')  # Generic type variable
 
-    def get_instance(*args : Any, **kwargs : Any):
+def singleton(cls: Type[T]) -> Type[T]:
+    instances : Dict[Type[T], T] = {}
+
+    def get_instance(*args : Any, **kwargs : Any) -> T:
         if cls not in instances:
             instances[cls] = cls(*args, **kwargs)
         return instances[cls]
-    return get_instance
+    # Use `cast` to tell the type checker that `get_instance` is of type `Type[T]`
+    return cast(Type[T], get_instance)
 
 
 @singleton
