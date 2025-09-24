@@ -3,7 +3,7 @@ from typing import Any, Optional
 class Singleton:
     _instance : Optional["Singleton"] = None
 
-    def __new__(cls, *args, **kwargs) -> "Singleton":
+    def __new__(cls, *args : Any, **kwargs : Any) -> "Singleton":
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
