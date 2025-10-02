@@ -1,4 +1,4 @@
-from typing import Any, Dict, TypeVar, Type, Callable, cast
+from typing import Any, Dict, TypeVar, Type, cast
 
 T = TypeVar('T')  # Generic type variable
 
